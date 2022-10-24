@@ -22,7 +22,7 @@ else
     if [ "$LAST_UPLOADED_MEASUREMENT_ID" -eq 0 ]; then
         {
             printf "%(%Y-%m-%d %H:%M:%S)T"
-            printf " | | %s" "LAST_UPLOADED_MEASUREMENT_ID returned 0. Exiting..."
+            printf " | NA | %s" "Error LAST_UPLOADED_MEASUREMENT_ID returned 0. Exiting..."
         } >> "$LOG_FILE"
         exit 1
     fi
