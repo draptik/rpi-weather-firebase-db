@@ -45,6 +45,23 @@ There are 3 scripts:
 - `sync.log`: For keeping track of what has been pushed to Firebase. Don't delete this file!
 - `out.tmp`: Result of current Db query. File is newly created whenever the script is invoked
 
+### Logs
+
+Typical entries in `sync.log` might look similar to:
+
+```txt
+2022-10-24 22:10:39 | 304174 | -NFAbapOqzjI_Z1HW8hn
+2022-10-24 22:10:44 | 304175 | -NFAbbfNYo6aQoI-TsOE
+2022-10-24 22:20:29 | NA | Error Exiting - LAST_DB_ID is not a number (happens when the DB query returns no results...). The query was:  SELECT * FROM temperatures WHERE id > 304175
+2022-10-24 22:30:30 | NA | Error Exiting - LAST_DB_ID is not a number (happens when the DB query returns no results...). The query was:  SELECT * FROM temperatures WHERE id > 304175
+2022-10-24 22:40:29 | NA | Error Exiting - LAST_DB_ID is not a number (happens when the DB query returns no results...). The query was:  SELECT * FROM temperatures WHERE id > 304175
+2022-10-24 22:50:31 | 304176 | -NFAki8l6F2RIB0VJTVj
+2022-10-24 23:00:30 | 304177 | -NFAn-XDII1t22eHPgUx
+2022-10-24 23:00:34 | 304178 | -NFAn0VSZr7viAMK3C0s
+2022-10-24 23:00:37 | 304179 | -NFAn1KdFjDIKlJZf7pl
+2022-10-24 23:10:29 | NA | Error Exiting - LAST_DB_ID is not a number (happens when the DB query returns no results...). The query was:  SELECT * FROM temperatures WHERE id > 304179
+```
+
 ## Credentials
 
 The script `get_authorized_url.sh` requires a config file:
@@ -95,21 +112,6 @@ The above cron job
 - runs every 10min (`*/10`)
 - executes the script `~/path/to/sync_with_firebase.sh`
 - redirects all output to `/path/to/failure.log` (via `>>/path/to/failure.log 2>&1`). Note: all logging output should already be taken care of by the main script. This ensures that we catch any errors that we missed.
-
-Typical entries in `sync.log` might look similar to:
-
-```txt
-2022-10-24 22:10:39 | 304174 | -NFAbapOqzjI_Z1HW8hn
-2022-10-24 22:10:44 | 304175 | -NFAbbfNYo6aQoI-TsOE
-2022-10-24 22:20:29 | NA | Error Exiting - LAST_DB_ID is not a number (happens when the DB query returns no results...). The query was:  SELECT * FROM temperatures WHERE id > 304175
-2022-10-24 22:30:30 | NA | Error Exiting - LAST_DB_ID is not a number (happens when the DB query returns no results...). The query was:  SELECT * FROM temperatures WHERE id > 304175
-2022-10-24 22:40:29 | NA | Error Exiting - LAST_DB_ID is not a number (happens when the DB query returns no results...). The query was:  SELECT * FROM temperatures WHERE id > 304175
-2022-10-24 22:50:31 | 304176 | -NFAki8l6F2RIB0VJTVj
-2022-10-24 23:00:30 | 304177 | -NFAn-XDII1t22eHPgUx
-2022-10-24 23:00:34 | 304178 | -NFAn0VSZr7viAMK3C0s
-2022-10-24 23:00:37 | 304179 | -NFAn1KdFjDIKlJZf7pl
-2022-10-24 23:10:29 | NA | Error Exiting - LAST_DB_ID is not a number (happens when the DB query returns no results...). The query was:  SELECT * FROM temperatures WHERE id > 304179
-```
 
 ## Initial Import
 
