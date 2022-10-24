@@ -29,7 +29,7 @@ I would love to say that the code describes itself. Spoiler: it doesn't (at leas
 
 There are 3 scripts:
 
-- `sync_with_firebase.sh`: This is the main script
+- [`sync_with_firebase.sh`](./sync_with_firebase.sh): This is the main script
   - "Happy path":
     - Script is invoked from a cron job
     - Get `LAST_UPLOADED_MEASUREMENT_ID` from previous run (from log file)
@@ -37,8 +37,8 @@ There are 3 scripts:
     - Check if there are changes which need to be pushed to Firebase
     - Push changes to Firebase -> The `while` loop at the end of the script
   - Everything else is just error handling & logging
-- `get_authorized_url.sh`: Create an URL containing the authorization token required by Firebase (see section Credentials below)
-- `read_log.sh`: Returns the most recently uploaded measurement
+- [`get_authorized_url.sh`](./get_authorized_url.sh): Create an URL containing the authorization token required by Firebase (see section Credentials below)
+- [`read_log.sh`](./read_log.sh): Returns the most recently uploaded measurement
 
 ### Generated files
 
@@ -64,7 +64,7 @@ Typical entries in `sync.log` might look similar to:
 
 ## Credentials
 
-The script `get_authorized_url.sh` requires a config file:
+The script [`get_authorized_url.sh`](./get_authorized_url.sh) requires a config file:
 
 ```sh
 CONFIG_FILE="$SCRIPT_DIR/credentials.json"
